@@ -11,7 +11,7 @@ plainBox.color = 'black';
 plainBox.size = 9;
 plainBox.contents = [];
 
-console.log(plainBox); 
+// console.log(plainBox); 
 
 /*
     # An object with properties declared line by line
@@ -27,7 +27,15 @@ console.log(plainBox);
             - add a key named `driver` and set it to be `null`.
             - add a key named `passengers` and set it to be an empty array.
  */
+var stockCar = {
+  model: 'Ford',
+  year: 2001,
+  automaticTransmission: true,
+  driver: null,
+  passengers: []
+};
 
+// console.log(stockCar);
 
 /*
     Add new property inside a function
@@ -42,8 +50,81 @@ console.log(plainBox);
 
         Finally, invoke your new function while passing in the `plainPerson` object and additional agrument values, then store the return value in a variable named `completePerson`. Use `console.log` three times to print the entire object, just the value at `name`, and just the value at `age`.
  */
+var plainPerson = {};
+var uglyCat = { isUgly: true, amtLegs: 3 };
 
+// Step 1: Define Function
+function buildPerson(personObj, nameString, ageNumber) { 
+  // `personObj` should be a object
+  // `nameString` should be a string
+  // `age` should be a number
+  personObj.name = nameString;
+  personObj.age = ageNumber;
+  return personObj;
+}
 
+// Step 2: Store invocation in variable
+// console.log(buildPerson(plainPerson, "Kevin", 30).name);
+// console.log(buildPerson(plainPerson, "Kevin", 30).age);
+// var completePerson = buildPerson(plainPerson, "Kevin", 30);
+// var completeCat = buildPerson(uglyCat, "Betty", 7);
+
+// // Step 3: Run console.log to test
+// console.log(completePerson);
+// console.log(completeCat);
+
+var arrayOfObjects = [
+  {
+    id: 0,
+    date: "Monday Jan 25 2015 2:01 PM",
+    total: "279.38"
+  },
+  {
+    id: 1,
+    date: "Monday Jan 27 2015 11:31 AM",
+    total: "79.80"
+  },
+  {
+    id: 2,
+    date: "Monday Feb 1 2015 7:56 AM",
+    total: "15.62"
+  },
+  {
+    id: 3,
+    date: "Monday Feb 1 2015 9:43 AM",
+    total: "19.83"
+  },
+  {
+    id: 4,
+    date: "Monday Feb 1 2015 11:08 PM",
+    total: "56.69"
+  },
+  {
+    id: 5,
+    date: "Monday Feb 13 2015 10:22 AM",
+    total: "137.92"
+  },
+  {
+    id: 6,
+    date: "Monday Feb 14 2015 6:54 PM",
+    total: "938.65"
+  },
+  {
+    id: 7,
+    date: "Monday Feb 14 2015 7:17 PM",
+    total: "43.77"
+  },
+  {
+    id: 8,
+    date: "Monday Feb 14 2015 7:18 PM",
+    total: "28.54"
+  },
+  {
+    id: 9,
+    date: "Monday Feb 14 2015 7:18 PM",
+    total: "194.33"
+  }
+];
 /*
     # Display values of objects that are inside an array
         Declare a new variable named `arrayOfObjects` and set it to be [this array of objects](https://gist.github.com/sgnl/958adf99007329d2e4ff).
@@ -66,7 +147,17 @@ console.log(plainBox);
             =====
             ...
  */
+function printProcessedOrders(orders) {
+  // `orders` will be an array
+  for (i = 0; i < orders.length; i++) {
+    console.log('=====');
+    console.log('id: '              + orders[i].id);
+    console.log('purchase date: '   + orders[i].date);
+    console.log('purchase total: '  + orders[i].total);
+  }
+}
 
+// printProcessedOrders(arrayOfObjects);
 
 /*
     # Addition with an object
@@ -78,7 +169,21 @@ console.log(plainBox);
 
         Go ahead and create some more objects and pass them to this function. Have fun with it.
 */
+var sumObj = {
+  a: 5,
+  b: 10,
+  result: undefined
+}
 
+function objectAddition(myObj) {
+  myObj.result = myObj.a + myObj.b;
+  // var sum = myObj.a + myObj.b;
+  // myObj.result = sum;
+  return myObj; // an object
+}
+
+var kevinObj = objectAddition(sumObj); // { a: 5, b: 10, result: 15 } 
+// console.log(kevinObj)
 
 /*
     # Print sum function and add as new key-value
@@ -93,7 +198,10 @@ console.log(plainBox);
 
         Invoke this function and pass in your object. Further test by changing the values of the object being passed in or **create more** objects and invoke your function multiple times.
  */
-
+function printObj(myObj) {
+  return myObj.a + ' + ' + myObj.b + ' = ' + myObj.result;
+}
+// console.log(printObj(sumObj));
 
 /*
     # Putting stuff in `plainBox`
@@ -101,7 +209,17 @@ console.log(plainBox);
 
         Invoke your function and pass in your object (which should be `plainBox`), store the result to a variable named plainBoxResult and use `console.log` to inspect your results.
  */
+// console.log(Math.random());
 
+function putInPlainBox(myObj) {
+  for (i = 0; i < 11; i++) {
+    myObj.contents.push(Math.floor((Math.random() * 100) + 1));     
+  }
+  return myObj;
+}
+
+var plainBoxResult = putInPlainBox(plainBox);
+// console.log(plainBoxResult);
 
 /*
     # Detecting transmission
@@ -111,7 +229,16 @@ console.log(plainBox);
 
         Invoke your function and pass in your stockCar object, store the result to a variable named isAutomaticTransmission and use `console.log` to inspect your results.
  */
-
+function detectingTransmission(myObj) {
+  if (myObj.automaticTransmission) {
+    console.log('Indeed, this car truly has an automatic transmission!');
+  } else {
+    console.log('No! This car is manual.')
+  }
+  return myObj;
+}
+var isAutomaticTransmission = detectingTransmission(stockCar);
+console.log(isAutomaticTransmission);
 
 /*
     # Who's driving this thing?!
